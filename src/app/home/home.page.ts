@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private storage: Storage,) {}
 
+  userName: string;
+
+  // get the username from storage
+  ngOnInit() {
+    this.storage.get('userName').then((name)=> {
+      this.userName = name;
+    })
+  }
 }

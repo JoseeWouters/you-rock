@@ -1,5 +1,7 @@
 {
   "name": "you-rock",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
