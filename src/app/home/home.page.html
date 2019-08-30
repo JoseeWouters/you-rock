@@ -1,5 +1,17 @@
 <ion-content>
   <section class="rocker">
     <h1>You Rock, {{ userName }}!</h1>
+    <p>Tell me your victory</p>
+    <form (ngSubmit)="submitVictory(inputVictory)">
+      <input type="text" name="input-victory" id="input-victory" [(ngModel)]="inputVictory">
+      <button type="submit">Celebrate your win</button>
+    </form>
+    <ul>
+      <li *ngFor="let victory of victories">
+        {{victory.name}}
+        <br>
+        {{victory.date | date :'hh:mm:ss' }}
+      </li>
+    </ul>
   </section>
 </ion-content>

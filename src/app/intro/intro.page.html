@@ -1,17 +1,18 @@
 <ion-slides pager="true" [options]="slideOpts">
   <ion-slide>
-    <h1>You Rock!</h1>
     <div *ngIf="userName else noName">
-      <p>
-        Nice to meet you, {{userName}}
-      </p>
-      <button routerLink="/home" routerDirection="root">Go to app</button>
+      <h1>
+        Nice to meet you, {{userName}}!
+      </h1>
+      <p>Are you ready to rock?</p>
+      <button routerLink="/home" routerDirection="root">Yes, take me to the app!</button>
     </div>
     <ng-template #noName>
+      <h1>You Rock!</h1>
       <p>Hi, I'm Hugo, your personal You Rock assistant!</p>
       <p>What's your name?</p>
-      <form (ngSubmit)="onSubmit()">
-        <input type="text" name="your-name" id="your-name" [(ngModel)]="inputName">
+      <form (ngSubmit)="submitUsername()">
+        <input type="text" name="input-name" id="input-name" [(ngModel)]="inputName" required>
         <button type="submit">Submit</button>
       </form>
     </ng-template>

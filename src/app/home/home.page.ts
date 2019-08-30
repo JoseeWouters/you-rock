@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
+export interface Victory {name: string, date: Date}
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,11 +13,35 @@ export class HomePage {
   constructor(private storage: Storage,) {}
 
   userName: string;
+  inputVictory: string;
+  victories: Victory[];
 
-  // get the username from storage
   ngOnInit() {
-    this.storage.get('userName').then((name)=> {
-      this.userName = name;
-    })
+    this.storage.get('userName').then(userName => {
+      this.userName = userName;
+    });
+
+    this.storage.get('victories').then(victories => {
+      this.victories = victories.sort((a: Victory, b: Victory) => a.date > b.date ? -1 : 1);
+    });
+  }
+
+  submitVictory(victory) {
+    this.storage.get('victories').then(victories => {
+      if (victories === null) {
+        victories = [];
+      }
+
+      victories.push(
+        {
+          name: victory,
+          date: new Date(),
+        }
+      );
+
+      this.storage.set('victories', victories);
+      this.inputVictory = '';
+      this.victories = victories.sort((a: Victory, b: Victory) => a.date > b.date ? -1 : 1);
+    });
   }
 }

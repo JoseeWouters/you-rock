@@ -19,8 +19,7 @@ export class IntroPage implements OnInit {
   ngOnInit() {
   }
   
-  // Saves the name the user inputs in storage
-  onSubmit() {
+  submitUsername() {
     this.storage.set('userName', this.inputName).then( () => {
       this.userName = this.inputName;
       this.inputName = '';

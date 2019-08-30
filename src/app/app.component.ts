@@ -27,14 +27,11 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      // Check if the intro has been shown once. 
-      // If it hasn't, show the intro and set intro in storage to true
-      this.storage.get('intro').then(result => {
-        if(result === true) {
+      this.storage.get('userName').then(userName => {
+        if(userName) {
           this.router.navigateByUrl('/home')
         } else {
           this.router.navigateByUrl('/intro');
-          this.storage.set('intro', true);
         }
       })
     });
