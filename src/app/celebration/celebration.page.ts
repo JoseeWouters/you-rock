@@ -12,7 +12,7 @@ export class CelebrationPage implements OnInit {
   constructor(private http: HttpClient,
     private modalCtrl: ModalController) { }
 
-  link = "http://api.giphy.com/v1/gifs/random?tag=celebrate&api_key=NXOLs6TyEz9ArmJU6EmEdIeOs1sY8rUo";
+  link = "https://api.giphy.com/v1/gifs/random?tag=celebrate&api_key=NXOLs6TyEz9ArmJU6EmEdIeOs1sY8rUo";
   gif;
 
   ngOnInit() {
