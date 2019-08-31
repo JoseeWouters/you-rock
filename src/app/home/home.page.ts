@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { ModalController } from '@ionic/angular';
+import { CelebrationPage } from '../celebration/celebration.page';
 
 export interface Victory {name: string, date: Date}
 
@@ -10,7 +12,8 @@ export interface Victory {name: string, date: Date}
 })
 export class HomePage {
 
-  constructor(private storage: Storage,) {}
+  constructor(private storage: Storage,
+    public modalController: ModalController) {}
 
   userName: string;
   inputVictory: string;
@@ -42,6 +45,14 @@ export class HomePage {
       this.storage.set('victories', victories);
       this.inputVictory = '';
       this.victories = victories.sort((a: Victory, b: Victory) => a.date > b.date ? -1 : 1);
+      this.presentModal();
     });
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: CelebrationPage
+    });
+    return await modal.present();
   }
 }
