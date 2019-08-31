@@ -10,19 +10,20 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CelebrationPage } from './celebration/celebration.page';
+import { CelebrationPageModule } from './celebration/celebration.module';
 
 @NgModule({
-  declarations: [AppComponent, CelebrationPage],
+  declarations: [AppComponent],
   entryComponents: [
-    CelebrationPage
+
   ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
     IonicStorageModule.forRoot(), 
-    HttpClientModule
+    HttpClientModule,
+    CelebrationPageModule
   ],
   providers: [
     StatusBar,
